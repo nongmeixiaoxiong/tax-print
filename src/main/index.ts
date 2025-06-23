@@ -1,7 +1,9 @@
-import { app, shell, BrowserWindow, ipcMain } from 'electron'
+import { app, shell, BrowserWindow, ipcMain ,dialog} from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
+import { PdfConverter } from './utils/pdfConverter'
+import fs from 'fs'
 
 function createWindow(): void {
   // Create the browser window.
@@ -72,3 +74,37 @@ app.on('window-all-closed', () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+
+ipcMain.handle('select-directory', async () => {
+  const { canceled, filePaths } = await dialog.showOpenDialog({
+    properties: ['openDirectory']
+  })
+  if (canceled) {
+    return []
+  }
+
+  console.log('filePaths', filePaths)
+
+  const dirPath = filePaths[0]
+  // 输出图片目录
+  const imgDirPath = join(dirPath, 'covimages')
+  if(!fs.existsSync(imgDirPath)){
+    fs.mkdirSync(imgDirPath)
+  }else{
+    fs.readdirSync(imgDirPath).forEach(file=>{
+      fs.unlinkSync(join(imgDirPath, file))
+    })
+  }
+  const pdfs = fs.readdirSync(dirPath).filter(file=>file.endsWith('.pdf'))
+  pdfs.forEach(async pdf=>{
+    const inputPDF = join(dirPath, pdf)
+    const outputPrefix = join(imgDirPath, pdf.replace('.pdf', ''))
+    try {
+      await PdfConverter.convertPdfToJpeg(inputPDF, outputPrefix)
+    } catch (error) {
+      console.error('PDF转换出错:', error)
+    }
+  })
+
+})
+

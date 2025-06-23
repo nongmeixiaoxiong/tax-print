@@ -1,0 +1,20 @@
+.app {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+
+    .file_loader {
+        width: 380px;
+        flex: 0 0 auto;
+    }
+
+    .a4_page {
+        flex: 0 0 auto;
+    }
+
+    .setting {
+        flex: 380px;
+        flex: 0 0 auto;
+    }
+}
