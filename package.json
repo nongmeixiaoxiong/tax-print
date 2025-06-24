@@ -23,10 +23,10 @@
   "dependencies": {
     "@electron-toolkit/preload": "^3.0.1",
     "@electron-toolkit/utils": "^4.0.0",
+    "classnames": "^2.5.1",
     "immer": "^10.1.1",
     "pdf-lib": "^1.17.1",
     "pdf-poppler": "^0.2.1",
-    "sharp": "^0.34.2",
     "use-immer": "^0.11.0"
   },
   "devDependencies": {

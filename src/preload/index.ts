@@ -6,6 +6,9 @@ const api = {
   selectDirectory: async () => {
     return await ipcRenderer.invoke('select-directory')
   },
+  printToPdf: async () => {
+    return await ipcRenderer.invoke('print-to-pdf')
+  }
 }
 
 // Use `contextBridge` APIs to expose Electron APIs to

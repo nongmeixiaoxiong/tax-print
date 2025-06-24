@@ -1,0 +1,77 @@
+.settingBox {
+    padding: 16px;
+
+    .settingItem {
+        margin: 24px 0;
+
+        .valBox {
+            margin-top: 8px;
+
+            .radioBox {
+                margin-right: 16px;
+            }
+        }
+    }
+
+    .opBtnBoxs {
+        display: flex;
+        flex-direction: row;
+
+        .opBtn {
+            margin: 16px;
+            width: 60%;
+            height: 38px;
+            border: none;
+            background-color: rgb(77, 107, 254);
+            border-radius: 4px;
+            cursor: pointer;
+            color: #fff;
+        }
+    }
+
+
+}
+
+.layoutBoxs {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 8px;
+
+    .layoutItem {
+        border: 2px solid rgb(214, 214, 214);
+        border-radius: 4px;
+        cursor: pointer;
+        padding: 4px;
+        display: grid;
+        grid-gap: 4px;
+
+        &:hover {
+            border: 2px solid #C9C9C9;
+        }
+
+        .taxBox {
+            background-color: rgb(245, 245, 245);
+            color: rgb(139, 139, 139);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+    }
+
+    .colLayout {
+        width: 100px;
+        height: 124px;
+    }
+
+    .rowLayout {
+        width: 100px;
+        height: 80px;
+    }
+
+    .active {
+        border: 2px solid #1F69E0 !important;
+    }
+}

@@ -5,16 +5,32 @@
     width: 100%;
 
     .file_loader {
-        width: 380px;
+        width: 250px;
         flex: 0 0 auto;
     }
 
     .a4_page {
-        flex: 0 0 auto;
+        flex: 1 0 auto;
     }
 
     .setting {
-        flex: 380px;
+        width: 350px;
         flex: 0 0 auto;
+    }
+}
+
+@media print {
+    .app {
+        .file_loader {
+            display: none !important;
+        }
+
+        .setting {
+            display: none !important;
+        }
+    }
+
+    @page {
+        margin: 0;
     }
 }
